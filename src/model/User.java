@@ -5,8 +5,8 @@ import java.sql.SQLException;
 
 public class User{
 
-	public static final String FirstName = "FirstName";
-	public static final String[] Columns = { FirstName};
+//	public static final String FirstName = "FirstName";
+//	public static final String[] Columns = { FirstName};
 	
 	private String firstName;
 	private String lastName;
@@ -17,8 +17,7 @@ public class User{
 
 	public User(ResultSet rs) throws SQLException{
 		
-			firstName = rs.getString(FirstName);
-
+		//	firstName = rs.getString(FirstName);
 	}
 	
 	public User(String firstName, String lastName, String username, String email, int role){

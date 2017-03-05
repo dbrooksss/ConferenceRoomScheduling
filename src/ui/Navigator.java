@@ -19,9 +19,10 @@ public class Navigator implements Navigate{
 
 	@Override
 	public void startConferenceRoom(){
+		closeLogin();
 		ConferenceRoomSelector window = new ConferenceRoomSelector(user);
 		window.setVisible(true);
 
-		closeLogin();
+		
 	}
 }

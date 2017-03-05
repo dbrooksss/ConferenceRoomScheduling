@@ -1,7 +1,4 @@
 package ui;
-//small app user can schedule room & dt , display comf, room, dt, person
-//TODO username to screen fix adds, cal view
-		// month view, day
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,6 +9,7 @@ import com.github.lgooddatepicker.optionalusertools.DateVetoPolicy;
 import data.RoomRepository;
 import model.Schedule;
 import model.User;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.sql.Time;
@@ -23,22 +21,33 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
-public class ConferenceRoomSelector extends BaseJFrame implements DateVetoPolicy{
+public class AdminAssistant extends BaseJFrame implements DateVetoPolicy{
 
 	private static final long serialVersionUID = 1L;
 	private User user;
 	private RoomRepository repository = new RoomRepository();
+	
+	public static void main(String[] args){
+		EventQueue.invokeLater(new Runnable(){
+			public void run(){
+				try{
+					
+					AdminAssistant a = new AdminAssistant(new User("blahhhhh", "lastname", "username", "me@home.com", 1));
+					a.setVisible(true);
+					
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
-	public ConferenceRoomSelector(User user){
+	public AdminAssistant(User user){
 		this.user = user; 
 		initialize();
 	}
 	
-//	  Rules the system should comply with when allowing employee calendar viewing are:
 //		a.	An administrative assistant should be able to view everyone’s schedule;
-//		b.	A manager should be able to view the calendar of all those who report to him;
-//		c.	Every individual should have the ability to grant/revoke permission to others to view their calendars;
-//		d.	An administrator should have additional system maintenance functions;
 
 	private void initialize(){
 		setTitle("Conference Room Date Picker");
@@ -112,7 +121,10 @@ public class ConferenceRoomSelector extends BaseJFrame implements DateVetoPolicy
 		submitButton.setBounds(242, 213, 99, 23);
 	}
 
-	// isDateAllowed, Return true if a date should be allowed, or false if a date should be vetoed.
+	/**
+		 * isDateAllowed, Return true if a date should be allowed, or false if a
+		 * date should be vetoed.
+		 */
 		@Override
 		public boolean isDateAllowed(LocalDate date){
 

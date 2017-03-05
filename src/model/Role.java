@@ -2,7 +2,7 @@ package model;
 
 public enum Role{
 	AdministrativeAssistant,
-	Administrator,
+	Administrator, 
 	Manager,
 	User
 }
